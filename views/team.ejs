@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Team Review</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+   
+      object-fit: cover !important;
+    
+      margin: 0;
+      padding: 20px;
+      background: url(https://wallpapers.com/images/high/virat-kohli-hd-cricket-game-m026dkjcmfjhwrg4.webp);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    #teamReviewForm {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    select,
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+      <h2 style=" color: #fff;"> Team Review</h2>
+      <form method="POST" action="/submit_review">
+          <div class="form-group">
+              <% if (locals.mess) { %>
+                  <p><%= mess %></p> 
+              <% } %>
+              
+              <label for="productName" style=" color: #fff;">Select a Team:</label>
+              <% if (locals.userLogin) { %>
+                  <input type="hidden" id="someInput" name="userEmail" placeholder="Enter something"
+                  value="<%= locals.userLogin.email  %>">   
+              <% } %>
+             
+              <select class="form-control" id="productName" name="productName">
+                  <% locals.team.forEach(teams=> { %>
+                      <option value="<%= teams.name %>">
+                          <%= teams.name %>
+                      </option>
+                      <% }); %>
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="review" style=" color: #fff;">I like the Team:</label>
+              <select class="form-control" id="review" name="review">
+                  <option value="like">Like</option>
+                  <option value="dislike">Not Like</option>
+              </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit Review</button>
+      </form>
+  </div>
+
+</body>
+</html>

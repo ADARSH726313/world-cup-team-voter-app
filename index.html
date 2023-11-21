@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Team Review</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+   
+      object-fit: cover !important;
+    
+      margin: 0;
+      padding: 20px;
+      background: url(https://wallpapers.com/images/high/virat-kohli-hd-cricket-game-m026dkjcmfjhwrg4.webp);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    #teamReviewForm {
+      max-width: 400px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    select,
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 style="color: #fff;">Select a Team and Give a Review</h1>
+
+  <form id="teamReviewForm" action="/submit-review" method="POST">
+    <label for="teamSelect">Select a Team:</label>
+    <select id="teamSelect" name="team">
+      <option value="teamA">Team A</option>
+      <option value="teamB">Team B</option>
+      <option value="teamC">Team C</option>
+      <!-- Add more teams as needed -->
+    </select>
+
+    <label for="reviewSelect">Review:</label>
+    <select id="reviewSelect" name="review">
+      <option value="like">Like</option>
+      <option value="dislike">Dislike</option>
+    </select>
+
+    <input type="submit" value="Submit Review">
+  </form>
+
+  <script>
+    document.getElementById("teamReviewForm").addEventListener("submit", function(event) {
+      event.preventDefault(); 
+
+      const selectedTeam = document.getElementById("teamSelect").value;
+      const selectedReview = document.getElementById("reviewSelect").value;
+
+      
+
+    
+      document.getElementById("teamReviewForm").reset();
+    });
+  </script>
+
+</body>
+</html>
